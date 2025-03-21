@@ -191,3 +191,5 @@ fabric.properties
 AutomationEnv/
 venv/
 .env
+
+.idea
