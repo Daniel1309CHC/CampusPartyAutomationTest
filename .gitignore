@@ -193,3 +193,5 @@ venv/
 .env
 
 .idea
+*.output
+reports/*

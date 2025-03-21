@@ -1,8 +1,0 @@
-Feature: Abrir el navegador # tests/features/open_browser.feature:1
-
-  Scenario: Abrir Chrome y verificar que la página carga  # tests/features/open_browser.feature:3
-    Given el usuario abre el navegador                    # tests/features/steps/open_browser.py:3
-    Then la página debe cargarse correctamente            # tests/features/steps/open_browser.py:8
-      Assertion Failed: La página no cargó correctamente
-
-
