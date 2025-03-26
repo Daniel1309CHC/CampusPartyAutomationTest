@@ -1,3 +1,5 @@
+import pdb
+
 import requests
 
 from tests.pages.api_auth_page import APIAuthPage
@@ -16,6 +18,7 @@ class APIUsersPage:
     def get_users(self):
         """Obtiene la lista de usuarios con un token válido."""
         token = self.get_auth_token()
+
         if not token:
             return None  # Si no hay token, devolvemos None
 

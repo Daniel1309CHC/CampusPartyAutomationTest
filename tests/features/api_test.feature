@@ -10,3 +10,8 @@ Feature: Pruebas de API
     When envía una solicitud GET al endpoint de usuarios
     Then la respuesta debe contener los datos de los usuarios
 
+@api @AuthUsuario
+  Scenario: Solicitud POST al endpoint de autenticación
+    Given que el usuario proporciona credenciales válidas con email "danielchaparro@gmail.com" y password "123"
+    When envía una solicitud POST al endpoint de autenticación
+    Then la respuesta debe contener un token de acceso y datos del usuario

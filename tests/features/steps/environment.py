@@ -1,5 +1,5 @@
 # tests/environment.py
-
+import logging
 import os
 import allure
 from allure_commons.types import AttachmentType
@@ -16,9 +16,22 @@ def before_all(context):
     if not os.path.exists(context.allure_report_dir):
         os.makedirs(context.allure_report_dir)
 
+    # para realizar prints descomente
+    context.config.stdout_capture = False
+    context.config.stderr_capture = False
+
 
 
 def before_scenario(context, scenario):
+
+    if "api" in scenario.tags:
+        print(f"Ejecutando escenario API: {scenario.name}")
+        context.is_api_test = True
+        return
+
+        # Configuración para pruebas con WebDriver
+    context.is_api_test = False
+
     """
     Se ejecuta antes de cada escenario de Behave.
     """
@@ -36,6 +49,13 @@ def before_scenario(context, scenario):
     context.driver.get(url)
 
 def after_scenario(context, scenario):
+    """
+       Si es una prueba API, no toma capturas ni cierra WebDriver.
+       Para pruebas UI, toma captura si el escenario falla.
+       """
+    if hasattr(context, "is_api_test") and context.is_api_test:
+        return  # No hacer nada para pruebas API
+
     """ Captura pantalla si el escenario falla y la guarda en la carpeta del escenario. """
     if scenario.status == "failed" and hasattr(context, "driver"):
         try:
@@ -54,6 +74,13 @@ def after_scenario(context, scenario):
 
 
 def after_step(context, step):
+
+    """
+    Captura pantallazos si un step falla, pero solo en pruebas UI.
+    """
+    if hasattr(context, "is_api_test") and context.is_api_test:
+        return  # No hacer nada para pruebas APIs
+
     """
     Captura pantallazos si un step falla y lo adjunta a Allure.
     """

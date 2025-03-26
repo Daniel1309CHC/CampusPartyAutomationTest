@@ -1,8 +1,8 @@
 import argparse
 import os
 import subprocess
-import pdb
-pdb.set_trace()
+# import pdb
+# pdb.set_trace()
 
 def main():
     parser = argparse.ArgumentParser(description="Runner para pruebas Behave con configuraciones dinámicas.")
