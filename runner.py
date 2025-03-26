@@ -1,6 +1,8 @@
 import argparse
 import os
 import subprocess
+import pdb
+pdb.set_trace()
 
 def main():
     parser = argparse.ArgumentParser(description="Runner para pruebas Behave con configuraciones dinámicas.")
@@ -44,9 +46,11 @@ def main():
             "-f", "junit", "-o", "reports/junit-report.xml"
         ])
 
+    command = ["behave"]
     if args.tags:
-        # Permite filtrar por etiquetas
         command.extend(["--tags", args.tags])
+    else:
+        command.append("tests/features")  # Solo si no hay tags, ejecuta todo
 
     # 3. Ejecutar Behave
     print(f"\n[INFO] Ejecutando Behave con navegador={args.browser}, headless={args.headless}, tags={args.tags}, report={args.report}")
