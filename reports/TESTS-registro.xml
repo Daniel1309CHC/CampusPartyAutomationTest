@@ -1,0 +1,27 @@
+<testsuite name="registro.Registro de Usuario" tests="2" errors="0" failures="0" skipped="2" time="0.0" timestamp="2025-03-26T19:35:35.771111" hostname="Daniel"><testcase classname="registro.Registro de Usuario" name="Registro de usuario con datos válidos" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @RegistroExitoso
+  Scenario: Registro de usuario con datos válidos
+    Given que el usuario accede al registro desde la pantalla de inicio ... skipped in 0.000s
+    When llena el formulario de registro con informacion valida ... skipped in 0.000s
+    Then accede al dashboard de inicio de campus party ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="registro.Registro de Usuario" name="Registro de usuario con cuenta existente" status="skipped" time="0"><skipped /><system-out>
+<![CDATA[
+@scenario.begin
+
+  @RegistroFallido
+  Scenario: Registro de usuario con cuenta existente
+    Given que el usuario accede al registro desde la pantalla de inicio ... skipped in 0.000s
+    When intenta registrarse con un correo ya registrado ... skipped in 0.000s
+    Then recibe un mensaje de error indicando que el usuario ya existe ... skipped in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

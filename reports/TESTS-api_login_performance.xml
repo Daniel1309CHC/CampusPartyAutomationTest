@@ -1,0 +1,14 @@
+<testsuite name="api_login_performance.Prueba de rendimiento en la API de login con credenciales inválidas" tests="1" errors="0" failures="0" skipped="0" time="0.316548" timestamp="2025-03-26T19:35:35.356148" hostname="Daniel"><testcase classname="api_login_performance.Prueba de rendimiento en la API de login con credenciales inválidas" name="Solicitud POST al endpoint de autenticación con credenciales inválidas en alta concurrencia" status="passed" time="0.316548"><system-out>
+<![CDATA[
+@scenario.begin
+
+  @api @AuthPerformance
+  Scenario: Solicitud POST al endpoint de autenticación con credenciales inválidas en alta concurrencia
+    Given que se simulan múltiples usuarios con credenciales inválidas ... passed in 0.001s
+    When se envían solicitudes POST concurrentes al endpoint de autenticación ... passed in 0.315s
+    Then el sistema debe responder con errores adecuados y mantener un tiempo de respuesta aceptable ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>

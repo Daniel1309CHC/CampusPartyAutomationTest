@@ -1,0 +1,27 @@
+<testsuite name="api_test.Pruebas de API" tests="2" errors="0" failures="0" skipped="0" time="0.365268" timestamp="2025-03-26T19:35:35.732928" hostname="Daniel"><testcase classname="api_test.Pruebas de API" name="Solicitud GET all al endpoint de usuarios" status="passed" time="0.247957"><system-out>
+<![CDATA[
+@scenario.begin
+
+  @api @GetUsuarios
+  Scenario: Solicitud GET all al endpoint de usuarios
+    Given que el usuario tiene acceso al token de autenticacion ... passed in 0.123s
+    When envía una solicitud GET al endpoint de usuarios ... passed in 0.124s
+    Then la respuesta debe contener los datos de los usuarios ... passed in 0.001s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase><testcase classname="api_test.Pruebas de API" name="Solicitud POST al endpoint de autenticación" status="passed" time="0.117311"><system-out>
+<![CDATA[
+@scenario.begin
+
+  @api @AuthUsuario
+  Scenario: Solicitud POST al endpoint de autenticación
+    Given que el usuario proporciona credenciales válidas con email "danielchaparro@gmail.com" y password "123" ... passed in 0.117s
+    When envía una solicitud POST al endpoint de autenticación ... passed in 0.000s
+    Then la respuesta debe contener un token de acceso y datos del usuario ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+]]>
+</system-out></testcase></testsuite>
