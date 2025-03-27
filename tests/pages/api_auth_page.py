@@ -29,3 +29,12 @@ class APIAuthPage:
             return data.get("access_token"), data  # Retorna el token y los datos completos del usuario
 
         return None, None  # En caso de fallo, retorna valores nulos
+
+
+    def login_invalid(self, credentials):
+        """
+        Envía una solicitud POST con credenciales inválidas y retorna la respuesta completa.
+        """
+        url = f"{self.BASE_URL}/auth/login"
+        response = requests.post(url, json=credentials)
+        return response
