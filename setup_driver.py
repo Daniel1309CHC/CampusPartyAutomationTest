@@ -1,5 +1,3 @@
-# setup_driver.py
-
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.firefox.service import Service as FirefoxService
@@ -11,27 +9,28 @@ from webdriver_manager.microsoft import EdgeChromiumDriverManager
 def get_driver(browser="chrome", headless=False):
     if browser == "chrome":
         options = webdriver.ChromeOptions()
-        # Para habilitar modo headless, descomenta la siguiente línea:
-        # if headless:
-        #     options.add_argument("--headless")
+        if headless:
+            options.add_argument("--headless=new")  # Modo headless actualizado
+            options.add_argument("--disable-gpu")  # Necesario en algunos entornos
+            options.add_argument("--window-size=1920,1080")  # Tamaño de ventana simulado
         service = ChromeService(ChromeDriverManager().install())
         driver = webdriver.Chrome(service=service, options=options)
+
     elif browser == "firefox":
         options = webdriver.FirefoxOptions()
-        # Para habilitar modo headless, descomenta la siguiente línea:
-        # if headless:
-        #     options.add_argument("--headless")
+        if headless:
+            options.add_argument("--headless")
         service = FirefoxService(GeckoDriverManager().install())
         driver = webdriver.Firefox(service=service, options=options)
+
     elif browser == "edge":
         options = webdriver.EdgeOptions()
-        # Para habilitar modo headless, descomenta la siguiente línea:
-        # if headless:
-        #     options.add_argument("--headless")
+        if headless:
+            options.add_argument("--headless")
         service = EdgeService(EdgeChromiumDriverManager().install())
         driver = webdriver.Edge(service=service, options=options)
+
     else:
         raise ValueError("Navegador no soportado. Usa: chrome, firefox o edge.")
 
-    driver.maximize_window()
     return driver
